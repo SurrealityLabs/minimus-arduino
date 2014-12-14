@@ -3,21 +3,34 @@
 ##############################################################
 
 minimus32.name=Minimus 32
+minimus32.vid.0=0x2341
+minimus32.pid.0=0x0036
+minimus32.vid.1=0x2341
+minimus32.pid.1=0x8036
+minimus32.upload.tool=avrdude
 minimus32.upload.protocol=avr109
 minimus32.upload.maximum_size=28672
 minimus32.upload.speed=57600
 minimus32.upload.disable_flushing=true
+minimus32.upload.use_1200bps_touch=true
+minimus32.upload.wait_for_upload_port=true
+
+minimus32.bootloader.tool=avrdude
 minimus32.bootloader.low_fuses=0xff
 minimus32.bootloader.high_fuses=0xd8
 minimus32.bootloader.extended_fuses=0xf4
-minimus32.bootloader.path=caterina
-minimus32.bootloader.file=Caterina-Minimus.hex
+minimus32.bootloader.file=caterina/Caterina-Minimus.hex
 minimus32.bootloader.unlock_bits=0x3F
 minimus32.bootloader.lock_bits=0x2F
+
 minimus32.build.mcu=atmega32u2
 minimus32.build.f_cpu=16000000L
 minimus32.build.vid=0x2341
 minimus32.build.pid=0x8036
+minimus32.build.usb_product="Minimus32"
+minimus32.build.usb_manufacturer="Arduino"
+minimus32.build.board=MINIMUS32
 minimus32.build.core=minimus
 minimus32.build.variant=minimus32
+minimus32.build.extra_flags={build.usb_flags}
 

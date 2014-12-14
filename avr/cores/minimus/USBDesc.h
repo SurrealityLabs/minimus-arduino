@@ -58,10 +58,6 @@
 #define HID_TX HID_ENDPOINT_INT
 #endif
 
-#ifndef USB_EP_SIZE
-#define USB_EP_SIZE 64
-#endif
-
 #define IMANUFACTURER	1
 #define IPRODUCT		2
 
