@@ -670,12 +670,21 @@ void USBDevice_::attach()
 #ifdef UHWCON
 	UHWCON = 0x01;						// power internal reg
 #endif
+	USBCON = 0;							// Reset controller
 	USBCON = (1<<USBE)|(1<<FRZCLK);		// clock frozen, usb enabled
-#if F_CPU == 16000000UL
-	PLLCSR = 0x12;						// Need 16 MHz xtal
-#elif F_CPU == 8000000UL
-	PLLCSR = 0x02;						// Need 8 MHz xtal
+#if F_CPU == 16000000L
+#ifdef PINDIV
+	flags = (1<<PINDIV);
+#else
+	flags = (1<<PLLP0);
 #endif
+#elif F_CPU == 8000000L
+	flags = 0;
+#else
+#error USB requires either 8 or 16 MHz xtal
+#endif
+	PLLCSR = flags;
+	PLLCSR = flags|(1<<PLLE);
 	while (!(PLLCSR & (1<<PLOCK)))		// wait for lock pll
 		;
 
